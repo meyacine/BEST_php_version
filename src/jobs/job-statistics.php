@@ -1,14 +1,19 @@
 <blockquote>
 	<p align="center">Statistics of executed Spring Batch Jobs</p>
 </blockquote>
-<!-- table>
-	<form id="jobParameter">	
-		<tr>
-			<td>TODO FORM WITH ANGULAR VALIDATION</td>
-			<td>TODO FORM WITH ANGULAR VALIDATION</td>
-		</tr>
-	</form>
-</table-->
+
+<table width="100%">
+	<tr>
+		<td><b>Date From:</b></td>
+		<td><input type="date" id="dateTo" name="dateFrom" class="dateChoise"/></td>
+		<td><b>Date To:</b></td>
+		<td><input type="date" id="dateTo" name="dateTo" class="dateChoise"/></td>
+		<td>
+			<input type="submit" name="validate" value="Submit"/>
+		</td>
+	</tr>
+	
+</table>
 
 
 

@@ -7,6 +7,7 @@
 	<!-- used styleSheets-->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/filtergrid.css" rel="stylesheet">
+	<link href="css/best.css" rel="stylesheet">
 	<!-- required js libraries -->
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/angular.js"></script>
