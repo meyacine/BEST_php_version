@@ -1,0 +1,27 @@
+<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">BEST</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav" ng-repeat="menu in pages.pagesDefinition">
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle">{{menu.onglet}}<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li ng-repeat="page in menu.pages"><a ng-href="#{{page.url}}">{{page.name}}</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php print "UserLogged"; ?> <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a data-toggle="modal" data-target="#aboutUs">About</a></li>
+						<li class="divider"></li>
+						<li><a href="./disconnect.php">Disconnect</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,17 @@
+[
+{
+  "onglet": "jobs",
+  "pages": [
+	{ "name": "List", "url": "/jobsList" },
+	{ "name": "Statistics", "url": "/jobsStatistics" },
+	{ "name": "Evolution", "url": "/jobsEvolutions" }
+  ]
+},
+{
+  "onglet": "steps",
+  "pages": [
+	{ "name": "List", "url": "/stepsList" },
+	{ "name": "Statistics", "url": "/stepsStatistics" },
+	{ "name": "Evolution", "url": "/stepsEvolutions" }
+  ]
+}]
