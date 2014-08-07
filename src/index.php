@@ -15,6 +15,7 @@
 	<script src="js/tablefilter_all_min.js"></script>
 	<!-- amCharts javascript sources -->
 	<script type="text/javascript" src="js/amcharts.js"></script>
+	<script type="text/javascript" src="js/pie.js"></script>
 	
 	<script src="dependencies/app.js"></script>	
 	<script src="dependencies/directive/bestDirectives.js"></script>	
