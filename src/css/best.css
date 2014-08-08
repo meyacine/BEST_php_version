@@ -3,3 +3,9 @@
 	width : 130px;
 	height :30px
 }
+.ng-invalid.ng-dirty{
+	border-color: #7A787E;
+}
+.ng-valid.ng-dirty{
+	border-color: #78FA89;
+}

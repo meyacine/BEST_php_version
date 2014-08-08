@@ -1,22 +1,30 @@
 <blockquote>
 	<p align="center">Statistics of executed Spring Batch Jobs</p>
 </blockquote>
-
-<table width="100%">
-	<tr>
-		<td><b>Date From:</b></td>
-		<td><input type="date" id="dateTo" name="dateFrom" class="dateChoise"/></td>
-		<td><b>Date To:</b></td>
-		<td><input type="date" id="dateTo" name="dateTo" class="dateChoise"/></td>
-		<td>
-			<input type="submit" name="validate" value="Submit"/>
-		</td>
-	</tr>
-	
-</table>
-
-
-
+<script>
+  $(function() {
+    $( "#dateFrom" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $( "#dateTo" ).datepicker({ dateFormat: 'dd-mm-yy' });
+  });
+ </script>
+<form name="statParams" ng-controller="StatController as statCtrl"
+	ng-submit="statParams.$valid && statCtrl.checkDateInterval()"
+	novalidate>
+	<table width="100%">
+		<tr bgcolor="#F8F8F8">
+			<td><b>Date From:</b></td>
+			<td><input type="text" id="dateFrom" name="dateFrom"
+				ng-pattern='datePattern' class="dateChoise"
+				ng-model="statCtrl.dateFrom" required /></td>
+			<td><b>Date To:</b></td>
+			<td><input type="text" id="dateTo" name="dateTo"
+				ng-pattern='datePattern' class="dateChoise"
+				ng-model="statCtrl.dateTo" required /></td>
+			<td><input type="submit" name="validate" value="Submit" /></td>
+		</tr>
+	</table>
+</form>
+<div class="alert" role="alert"></div>
 <?php
 		// we use the imported utils library imported in index
 		include_once"../Utils.php";
@@ -25,7 +33,7 @@
 		
 		//TODO REFACTOR THIS CODE USING ANGULAR
 		
-	?>  
+	?>
 <!-- amCharts javascript code -->
 <script type="text/javascript">
 	AmCharts.makeChart("chartdiv",
@@ -66,6 +74,6 @@
 			]
 		}
 	);
-</script>	
-<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
-	
+</script>
+<div id="chartdiv"
+	style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
