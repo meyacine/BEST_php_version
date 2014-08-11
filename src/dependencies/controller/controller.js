@@ -12,7 +12,7 @@
 	});
 	bestController.controller('StepEvolutionCtrl', function(){
 	});
-	bestController.controller('StatController', function(){
+	bestController.controller('StatController', function($http){
 		this.dateFrom = "";
 		this.dateTo = "";
 		this.checkDateInterval = function(){
@@ -25,7 +25,18 @@
 						"</div>");
 				}
 			else {
-				alert ('here we launch your query');
+				//alert ('here we launch your query');
+				 $http({
+					 method: 'GET', 
+					 url: "controller.php/getJobsStatusAndTotalByDateInterval(\""+this.dateFrom+"\",\""+this.dateTo+"\")", 
+					 header:"Content-Type: application/json"
+					 }).
+				    success(function(data, status, headers, config) {
+				    	alert('here we go');
+				    }).
+				    error(function(data, status, headers, config) {
+				    	alert('Ouppss error ! ');
+				    });
 			}
 		}
 	});
