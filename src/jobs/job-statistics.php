@@ -23,9 +23,8 @@
 			<td><input type="submit" name="validate" value="Submit" /></td>
 		</tr>
 	</table>
+	<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;">
+		<h3 align="center">Your chart will be displayed here</h3>
+	</div>
 </form>
-<div class="alert" role="alert"></div>
-<!-- amCharts javascript code -->
 
-<div id="chartdiv"
-	style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>

@@ -1,19 +1,24 @@
 <?php
-// we use the imported utils library imported in index
 include_once"Utils.php";
+/**
+ * @author Maamar Yacine MEDDAH
+ * 
+ * Best Controller, here we define all ajax calls concerning database accessing
+ * 
+ */
 class BestControllerSvc{
-	private $result;
-	
-	function __construct() {
-		print "In constructor\n";
-		$this->result = null;
-	}
-	
+	/**
+	 * This method return a json wish contains job_status, and count, in the interval (dateA,dateB)
+	 * It's used in the statistics display 
+	 * 
+	 * @param unknown $dateA "dd-mm-yyyy"
+	 * @param unknown $dateB "dd-mm-yyyy"
+	 */
 	public static function getJobsStatusAndTotalByDateInterval($dateA, $dateB){
 		// Establishing db connection
 		$utils= new Utils;
 		$utils->databaseConnect();
-		// listing data
+		// gathering data
 		$stmt = $utils->dbc->prepare("".
 				"SELECT bje.STATUS as status, COUNT(bje.JOB_INSTANCE_ID) as totalCount ".
 				"FROM BATCH_JOB_EXECUTION bje , BATCH_JOB_INSTANCE bji ".
@@ -31,10 +36,11 @@ class BestControllerSvc{
 		echo $json;		
 	}
 }
-// we get url params
-$method="";
+/**
+ *  This part of code is kind of handler whish get from the url the method to call
+ */
+$method="";// i set the method to empty string, to avoid the undefined exeption
 extract($_GET);
-// we call the specified method
 switch($method){
 	case "gjsatbdi":{
 		BestControllerSvc::getJobsStatusAndTotalByDateInterval($dateA, $dateB);

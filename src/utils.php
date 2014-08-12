@@ -1,10 +1,13 @@
 <?php
-	/*******************************************************************************************
-	* @Author: Maamar Yacine MEDDAH
+
+	/**
+	* *****************************************************************************************
+	* @author: Maamar Yacine MEDDAH
 	* BEST utils class
 	* we define in this class a set of functionalities:
 	* dbConnection that read the database.properties file and connect to the db
-	*******************************************************************************************/
+	*******************************************************************************************
+	**/
 	class Utils {
 		public $host;
 		public $schema;

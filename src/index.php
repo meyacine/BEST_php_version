@@ -6,6 +6,7 @@
 	<meta author="Maamar Yacine MEDDAH"></meta>
 	<!-- used styleSheets-->
 	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/filtergrid.css" rel="stylesheet">
 	<link href="css/best.css" rel="stylesheet">
 	<link href="css/jquery-ui.css" rel="stylesheet">
