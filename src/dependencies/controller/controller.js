@@ -12,7 +12,7 @@
 	});
 	bestController.controller('StepEvolutionCtrl', function(){
 	});
-	bestController.controller('StatController', function($http){
+	bestController.controller('StatController', function($scope, $http, $templateCache){
 		this.dateFrom = "";
 		this.dateTo = "";
 		this.checkDateInterval = function(){
@@ -24,19 +24,22 @@
 						"<strong>Error!</strong> (Date To) smaller than (Date From) is that logic !." +
 						"</div>");
 				}
-			else {
-				//alert ('here we launch your query');
-				 $http({
-					 method: 'GET', 
-					 url: "controller.php/getJobsStatusAndTotalByDateInterval(\""+this.dateFrom+"\",\""+this.dateTo+"\")", 
-					 header:"Content-Type: application/json"
-					 }).
-				    success(function(data, status, headers, config) {
-				    	alert('here we go');
-				    }).
-				    error(function(data, status, headers, config) {
-				    	alert('Ouppss error ! ');
-				    });
+			else {				
+				 $scope.method = 'GET';
+				    $scope.url = "./controller.php/getJobsStatusAndTotalByDateInterval(\""+this.dateFrom+"\",\""+this.dateTo+"\")";
+				    $scope.data = "";
+				        $http({
+				            method: $scope.method, 
+				            url: $scope.url,
+				            headers: {'Content-Type': 'application/json'},  
+				            cache: $templateCache
+				        }).
+				        success(function(response) {
+				            $scope.data = response.data;
+				        }).
+				        error(function(response) {
+				            $scope.data = response || "Request failed";
+				        });
 			}
 		}
 	});
