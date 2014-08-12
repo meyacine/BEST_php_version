@@ -25,18 +25,35 @@
 						"</div>");
 				}
 			else {				
-				 $scope.method = 'GET';
-				    $scope.url = "./controller.php/getJobsStatusAndTotalByDateInterval(\""+this.dateFrom+"\",\""+this.dateTo+"\")";
+				 	$scope.method = 'GET';
+				    $scope.url = "./controller.php?method=gjsatbdi&dateA="+this.dateFrom+"&dateB="+this.dateTo;
 				    $scope.data = "";
 				        $http({
 				            method: $scope.method, 
 				            url: $scope.url,
-				            headers: {'Content-Type': 'application/json'},  
-				            cache: $templateCache
+				            headers: {'Content-Type': 'application/json'}
 				        }).
-				        success(function(response) {
-				            $scope.data = response.data;
-				        }).
+				        success(
+				        		function(response) 
+				        		{
+				        			// it should diplay your chart :p
+				        			var chartData = [];
+			                        $.each(response, function(i, result) {
+			                            chartData.push(result);
+			                        });
+				                    this.statusChart = new AmCharts.AmPieChart();
+				                    this.statusChart.theme = "chalk";
+				                    this.statusChart.titleField = "status";
+				                    this.statusChart.valueField = "totalCount";
+				                    this.statusChart.dataProvider = chartData;
+				                    var legend = new AmCharts.AmLegend();
+				                    legend.align="center";
+				                    legend.markerType="circle";
+				                    this.statusChart.addLegend(legend);
+				                    this.statusChart.balloonText = "[[status]] <span style = 'font-size:14px'> <b> [[value]] </b> ([[percents]]%)</span> ",
+				                    this.statusChart.write("chartdiv");
+				        		}
+		        		).
 				        error(function(response) {
 				            $scope.data = response || "Request failed";
 				        });

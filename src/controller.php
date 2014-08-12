@@ -2,8 +2,14 @@
 // we use the imported utils library imported in index
 include_once"Utils.php";
 class BestControllerSvc{
+	private $result;
 	
-	public function getJobsStatusAndTotalByDateInterval($dateA, $dateB){
+	function __construct() {
+		print "In constructor\n";
+		$this->result = null;
+	}
+	
+	public static function getJobsStatusAndTotalByDateInterval($dateA, $dateB){
 		// Establishing db connection
 		$utils= new Utils;
 		$utils->databaseConnect();
@@ -22,7 +28,18 @@ class BestControllerSvc{
 		$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
 		$utils = null;
 		$json=json_encode($results);
-		return $json;		
+		echo $json;		
 	}
 }
+// we get url params
+$method="";
+extract($_GET);
+// we call the specified method
+switch($method){
+	case "gjsatbdi":{
+		BestControllerSvc::getJobsStatusAndTotalByDateInterval($dateA, $dateB);
+		break;
+	}
+}
+header('Content-type: application/json');
 ?>
