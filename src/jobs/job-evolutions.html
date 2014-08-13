@@ -1,1 +1,29 @@
-jobs evolutions
+<blockquote>
+	<p align="center">Statistics of executed Spring Batch Jobs</p>
+</blockquote>
+<script>
+  $(function() {
+    $( "#dateFrom" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $( "#dateTo" ).datepicker({ dateFormat: 'dd-mm-yy' });
+  });
+ </script>
+<form name="statParams"  class="form-inline" role="form" ng-controller="StatController as statCtrl"
+	ng-submit="statParams.$valid && statCtrl.checkDateInterval()"
+	novalidate>
+	<div class="form-group">
+		<label class="sr-only">Job Name:</label>
+	 	<job-list></job-list>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+		  <div class="input-group-addon">Date From:</div>
+		  <input class="form-control" type="text" id="dateFrom" name="dateFrom" ng-pattern="datePattern" ng-model="statCtrl.dateFrom" required>
+		  <div class="input-group-addon">Date To:</div>
+		  <input class="form-control" type="text" id="dateTo" name="dateTo" ng-pattern="datePattern" ng-model="statCtrl.dateTo" required>
+		</div>
+	</div>
+	  <button type="submit" class="btn btn-default">submit</button>
+	<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;">
+		<h3 align="center">Your chart will be displayed here</h3>
+	</div>
+</form>

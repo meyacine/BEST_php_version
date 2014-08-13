@@ -35,6 +35,26 @@ class BestControllerSvc{
 		$json=json_encode($results);
 		echo $json;		
 	}
+	
+	/**
+	 * This method return the jobs list order by name
+	 */
+	public static function getJobsList(){
+		// Establishing db connection
+		$utils= new Utils;
+		$utils->databaseConnect();
+		// gathering data
+		$stmt = $utils->dbc->prepare(
+				"SELECT DISTINCT JOB_NAME as jobName "
+				."FROM batch_job_instance "
+				."ORDER BY jobName ASC"
+		);
+		$stmt->execute();
+		$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		$utils = null;
+		$json=json_encode($results);
+		echo $json;
+	}
 }
 /**
  *  This part of code is kind of handler whish get from the url the method to call
@@ -44,6 +64,10 @@ extract($_GET);
 switch($method){
 	case "gjsatbdi":{
 		BestControllerSvc::getJobsStatusAndTotalByDateInterval($dateA, $dateB);
+		break;
+	}
+	case "gjl":{
+		BestControllerSvc::getJobsList();
 		break;
 	}
 }

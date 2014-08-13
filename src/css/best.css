@@ -3,6 +3,10 @@
 	width : 130px;
 	height :30px
 }
+.jobsList {
+	width : 100%;
+	height :30px
+}
 .ng-invalid.ng-dirty{
 	border-color: #7A787E;
 }
